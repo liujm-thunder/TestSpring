@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.hnust.dao.IVipDao">
+    <resultMap id="vipResultMap" type="com.cn.hnust.pojo.Vip">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" jdbcType="VARCHAR"/>
+        <result column="id_number" property="idNumber" jdbcType="INTEGER"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="plate_number" property="plateNumber" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="account" property="account" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="birthday" property="birthday" jdbcType="DATE"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, gender, id_number,phone,plate_number,email,account,remark,birthday
+    </sql>
+    <!--通过id查询Vip-->
+    <select id="getVipById" resultMap="vipResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from vip
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <!--查询出数据库中所有的Vip-->
+    <select id="findAllVips" resultMap="vipResultMap">
+        select * from vip
+    </select>
+
+
+    <insert id="saveVip" parameterType="com.cn.hnust.pojo.Vip">
+        insert into vip (id,name, gender,id_number,phone,plate_number,email,account,remark,birthday)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR},
+        #{idNumber,jdbcType=INTEGER},#{phone,jdbcType=VARCHAR},
+        #{plateNumber,jdbcType=INTEGER},#{email,jdbcType=VARCHAR},#{account,jdbcType=INTEGER},
+        #{remark,jdbcType=VARCHAR},#{birthday,jdbcType=DATE},)
+    </insert>
+
+    <!--<insert id="saveVip" parameterType="com.cn.hnust.pojo.Vip">-->
+    <!--insert into vip-->
+    <!--<trim prefix="(" suffix=")" suffixOverrides="," >-->
+    <!--<if test="id != null" >-->
+    <!--id,-->
+    <!--</if>-->
+    <!--<if test="name != null" >-->
+    <!--user_name,-->
+    <!--</if>-->
+    <!--<if test="gender != null" >-->
+    <!--password,-->
+    <!--</if>-->
+    <!--<if test="idNumber != null" >-->
+    <!--age,-->
+    <!--</if>-->
+    <!--<if test="birthday != null" >-->
+    <!--age,-->
+    <!--</if>-->
+    <!--<if test="phone != null" >-->
+    <!--age,-->
+    <!--</if>-->
+    <!--<if test="email != null" >-->
+    <!--age,-->
+    <!--</if>-->
+    <!--<if test="account != null" >-->
+    <!--age,-->
+    <!--</if>-->
+    <!--<if test="remark != null" >-->
+    <!--age,-->
+    <!--</if>-->
+    <!--<if test="plateNumber != null" >-->
+    <!--age,-->
+    <!--</if>-->
+    <!--</trim>-->
+    <!--<trim prefix="values (" suffix=")" suffixOverrides="," >-->
+    <!--<if test="id != null" >-->
+    <!--#{id,jdbcType=INTEGER},-->
+    <!--</if>-->
+    <!--<if test="name != null" >-->
+    <!--#{name,jdbcType=VARCHAR},-->
+    <!--</if>-->
+    <!--<if test="gender != null" >-->
+    <!--#{gender,jdbcType=VARCHAR},-->
+    <!--</if>-->
+    <!--<if test="idNumber != null" >-->
+    <!--#{age,jdbcType=INTEGER},-->
+    <!--</if>-->
+    <!--<if test="birthday != null" >-->
+    <!--#{age,jdbcType=DATE},-->
+    <!--</if>-->
+    <!--<if test="phone != null" >-->
+    <!--#{age,jdbcType=VARCHAR},-->
+    <!--</if>-->
+    <!--<if test="email != null" >-->
+    <!--#{age,jdbcType=VARCHAR},-->
+    <!--</if>-->
+    <!--<if test="account != null" >-->
+    <!--#{age,jdbcType=INTEGER},-->
+    <!--</if>-->
+    <!--<if test="remark != null" >-->
+    <!--#{age,jdbcType=VARCHAR},-->
+    <!--</if>-->
+    <!--<if test="plateNumber != null" >-->
+    <!--#{age,jdbcType=VARCHAR},-->
+    <!--</if>-->
+    <!--</trim>-->
+    <!--</insert>-->
+
+    <!--按照主键id删除vip -->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from vip
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+</mapper>
