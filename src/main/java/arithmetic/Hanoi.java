@@ -9,6 +9,7 @@ public class Hanoi {
     }
 
     static void hanoi(int n, String src, String mid, String dest) {
+        if (n <= 0) return;
         if (n == 1) {
             System.out.println(src + "-->" + dest);
         } else {
