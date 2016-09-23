@@ -74,6 +74,8 @@ public class AddListNode {
     public static void main(String[] args) {
         ListNode l1 = new ListNode(9);
         ListNode l2 = new ListNode(8);
+        System.out.println(System.currentTimeMillis());
         addLists(l1, l2);
+        System.out.println(System.currentTimeMillis());
     }
 }
