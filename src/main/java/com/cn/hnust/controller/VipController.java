@@ -21,13 +21,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/vips")
 public class VipController {
-    public IVipService getVipService() {
-        return vipService;
-    }
-
-    public void setVipService(IVipService vipService) {
-        this.vipService = vipService;
-    }
 
     @Resource
     private IVipService vipService;

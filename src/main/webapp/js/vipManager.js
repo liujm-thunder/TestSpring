@@ -60,10 +60,6 @@ function initTable() {
 }
 
 function deletevip(vipId) {
-
-
-
-
     $.ajax({
         data: "vipId=" + vipId,
         type: "POST",
